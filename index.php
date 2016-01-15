@@ -11,29 +11,26 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $position = filter_input(INPUT_GET, 'board');
-            $squares = str_split($position);
+            // loads Game class
+            require_once("Game.php"); 
             
-            if (winner('x', $squares)) {
-                echo 'You win.';
-            } else if (winner('o', $squares)) {
-                echo 'I win.';
-            } else {
-                echo 'No winner yet.';
-            }
-        function winner($token,$position)
+            // gets request from browser
+            $game = new Game(filter_input(INPUT_GET, 'board'));
+            
+            // displays gameboard
+            $game->display();
+
+            if ($game->winner('x'))
             {
-                for($row=0; $row<3; $row++)
-                {
-                    $result = true;
-                    for($col=0; $col<3; $col++)
-                    {
-                        if ($position[3*$row+$col] != $token)
-                        {
-                            $result = false;
-                        }
-                    }
-                }
+                echo 'You win. Lucky guess!';
+            }
+            else if ($game->winner('o'))
+            {
+                echo 'I win. Muhahahaha';
+            }
+            else
+            {
+                echo 'No winer yet, but you are losing.';
             }
         ?>
     </body>
