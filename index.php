@@ -11,25 +11,52 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $name = 'Jim';
-            $what = 'geek';
-            $level =10;
-            echo 'Hi, my name '.$name,'. and I am a level '.$level.'
-            '.$what;
-            echo '<br/>';
-            $hoursworked = filter_input(INPUT_GET, 'hours');
-            $rate = 12;
-            $total = $hoursworked * $rate;
+            $position = filter_input(INPUT_GET, 'board');
+            $squares = str_split($position);
             
-            if ($hoursworked > 40)
-            {
-                $total = $hoursworked * $rate * 1.5;
+            if (winner('x', $squares)) {
+                echo 'You win.';
+            } else if (winner('o', $squares)) {
+                echo 'I win.';
+            } else {
+                echo 'No winner yet.';
             }
-            else
+
+        function winner($token,$position)
             {
-                $total = $hoursworked * $rate;
+                $won = false;
+                if (($position[0] == $token) &&
+                    ($position[1] == $token)&&
+                    ($position[2] == $token))
+                    {
+                        $won = true;
+                    }
+                else if (($position[3] == $token) &&
+                         ($position[4] == $token) &&
+                         ($position[5] == $token))
+                    {
+                        $won = true;
+                    }
+                else if (($position[6] == $token) &&
+                         ($position[7] == $token) &&
+                         ($position[8] == $token))
+                   {
+                       $won = true;
+                   }
+                else if (($position[0] == $token) &&
+                         ($position[4] == $token) &&
+                         ($position[8] == $token))
+                   {
+                       $won = true;
+                   }
+                else if (($position[2] == $token) &&
+                         ($position[4] == $token) &&
+                         ($position[6] == $token))
+                   {
+                       $won = true;
+                   }
+                    return $won;
             }
-            echo ($total > 0) ? 'You owe me '.$total : " You're welcome";
         ?>
     </body>
 </html>
