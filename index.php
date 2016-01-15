@@ -21,6 +21,24 @@ and open the template in the editor.
             $rate = 12;
             $total = $hoursworked * $rate;
             echo 'You owe me '.$total;
+            
+            
+            switch (name)
+            {
+                case 'Jim': $answer = 'great'; break;
+                case 'George': $answer ='unknown'; break;
+                default: $answer = 'unknown';
+            }
+            
+            if ($hoursworked > 40)
+            {
+                $total = $hoursworked * $rate * 1.5;
+            }
+            else
+            {
+                $total = $hourworked * $rate;
+            }
+            echo ($total > 0) ? 'You owe me '.$total : "You're welcome";
         ?>
     </body>
 </html>
