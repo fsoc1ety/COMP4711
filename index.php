@@ -17,18 +17,9 @@ and open the template in the editor.
             echo 'Hi, my name '.$name,'. and I am a level '.$level.'
             '.$what;
             echo '<br/>';
-            $hoursworked = 10;
+            $hoursworked = filter_input(INPUT_GET, 'hours');
             $rate = 12;
             $total = $hoursworked * $rate;
-            echo 'You owe me '.$total;
-            
-            
-            switch (name)
-            {
-                case 'Jim': $answer = 'great'; break;
-                case 'George': $answer ='unknown'; break;
-                default: $answer = 'unknown';
-            }
             
             if ($hoursworked > 40)
             {
@@ -36,9 +27,9 @@ and open the template in the editor.
             }
             else
             {
-                $total = $hourworked * $rate;
+                $total = $hoursworked * $rate;
             }
-            echo ($total > 0) ? 'You owe me '.$total : "You're welcome";
+            echo ($total > 0) ? 'You owe me '.$total : " You're welcome";
         ?>
     </body>
 </html>
