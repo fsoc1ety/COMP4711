@@ -77,10 +77,29 @@ class Game {
             
         $this->newposition = $this->position;
         $this->newposition[$which] = 'o';
+        $pos = $this->pick_move();
+        $this->newposition[$pos] = 'x';
         $move = implode($this->newposition);
         $link = '?board=' . $move;
         return '<td><a href="' . $link . '">-</a></td>';
     }
     
+    // picks the move for the bot
+    function pick_move()
+    {
+        $makeMove = false;
+        
+        while(!$makeMove)
+        {
+
+            $move = rand(0, 8);
+            
+            if($this->position != "x" && $this->position != "o")
+            {
+                $makeMove = true;
+            }
+        }
+        return $move;
+    }
    
 }
