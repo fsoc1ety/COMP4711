@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo "Test github"
+        echo "Test github push from netbeans"
         ?>
     </body>
 </html>
