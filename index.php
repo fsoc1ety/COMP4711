@@ -21,7 +21,6 @@ and open the template in the editor.
             } else {
                 echo 'No winner yet.';
             }
-
         function winner($token,$position)
             {
                 for($row=0; $row<3; $row++)
